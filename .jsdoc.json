@@ -1,0 +1,37 @@
+{
+  "source": {
+    "include": ["./"],
+    "includePattern": ".+\\.js?$",
+    "exclude": [
+      "./node_modules/"
+    ]
+  },
+  "opts": {
+    "destination": "./docs/",
+    "recurse": true,
+    "template": "./node_modules/ink-docstrap/template",
+    "readme": "README.md"
+  },
+  "plugins": ["plugins/markdown"],
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true
+  },
+  "templates": {
+    "systemName": "#nowPlaying",
+    "footer": "This is the footer",
+    "copyright":  "Julian Correa",
+    "includeDate": true,
+    "navType": "vertical",
+    "theme": "cerulean",
+    "linenums": true,
+    "collapseSymbols": false,
+    "inverseNav": false,
+    "outputSourceFiles": true,
+    "outputSourcePath": true,
+    "dateFormat": "D MMM YYYY",
+    "syntaxTheme": "default",
+    "sort": "longname, version, since",
+    "search": true
+  }
+}
