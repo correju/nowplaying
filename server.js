@@ -27,15 +27,13 @@ const port = process.env.PORT || 8080
 app.all("/*", (req, res) => {
 	res.render("index")
 })
-let i = 0
+
+/*let i = 0
 getTwits$.subscribe(
   data => {
     i++
-    /*try {
-      const relativeTime = moment(data.created_at).fromNow()
-    }catch (err) {*/
+
       const relativeTime = 'empty'
-    //}
     console.log(chalk.green(`${i} - ${relativeTime} - ${data.text}
     `))
   },
@@ -45,8 +43,8 @@ getTwits$.subscribe(
   complete => {
   console.log('done')
   }
-)
+)*/
 
-/*app.listen(port, function(){
+app.listen(port, function(){
     console.log(chalk.blue(`server running in port ${port}`))
-})*/
+})
