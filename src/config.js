@@ -1,55 +1,23 @@
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
 
-/*import SearchService from './services/SearchService/'
-import ConfigurationService from './services/ConfigurationService/'
-import PeopleService from './services/PeopleService/'
-import MovieTVService from './services/MovieTVService'
-
-import SearchController from './controllers/SearchController/'
-import SearchPanelController from './controllers/SearchPanelController/'
-import PeopleController from './controllers/PeopleController/'
-import MoviesTVController from './controllers/MoviesTVController'
-
-import SearchPanelComponent from './components/SearchPanelComponent/'
-import PeopleComponent from './components/PeopleComponent'
-import MoviesTVComponent from './components/MoviesTVComponent'*/
+import FirstController from './controllers/first.controller'
+import TwitsController from './controllers/twits.controller'
+import TwitsComponent from './components/twits.component'
 
 const app = angular.module('app', [uiRouter])
-/**
- * Services Registration
- */
-/*app.service('searchService',SearchService)
-app.service('configurationService',ConfigurationService)
-app.service('peopleService',PeopleService)
-app.service('movieTVService',MovieTVService)*/
 
-/**
- * Controllers Registration
- */
-/*app.controller('searchController', SearchController)
-app.controller('searchPanelController', SearchPanelController)
-app.controller('peopleController', PeopleController)
-app.controller('moviesTVController', MoviesTVController)*/
+app.controller('firstController', FirstController)
+app.controller('twitsController', TwitsController)
 
+app.component('twitsComponent', TwitsComponent)
 
-/**
- * Controllers Registration
- */
-/*
-app.component('searchPanel', SearchPanelComponent)
-app.component('peopleComponent', PeopleComponent)
-app.component('moviesTvComponent', MoviesTVComponent)
-*/
-/**
- * Router configuration
- */
 app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
     $urlRouterProvider.otherwise('/');
     $stateProvider
         .state('todos', {
             url: '/',
-            template: ''
+            template: '<twits-component></twits-component>'
         })
         $locationProvider.html5Mode(true)
 })
