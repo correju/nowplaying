@@ -6,7 +6,10 @@ html(lang='en')
     title #nowPlaying
     base(href='/')
     link(href='./css/main.css', rel='stylesheet')
-  body(ng-controller="firstController as first")
-    span {{first.x}}
-    div(class="router" ui-view='')
+    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet')
+    link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel='stylesheet')
+  body(class="my-style")
+    main(class="router" ui-view='')
+    iframe#player(type='text/html', width='640', height='390', src='https://t.co/hLwt6LXWWE', frameborder='0')
+    script(src="https://www.youtube.com/iframe_api")
     script(src='bundle.js')

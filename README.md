@@ -12,3 +12,9 @@ This variables must be created in order to connect to the **TWITTER's API**
 **npm run build** to build production
 **npm start** to build and run dev server
 **node server.js** to server
+## Time SPEND ON THIS
+**SATURDAY** 4 hours setting nodejs to get twitter stream
+**SATURDAY** 3 hours setting webpack, angular and ngtweet and connecting to the strem
+**SATURDAY** 2 house refactor the nodejs connection to twitter stream using rxjs and socket.io there is no way I can geolocate per user I can only geolocate all.
+**SUNDAY** 2 hours setting styles
+**SUNDAY** 1 hour searching why geolocate is not working on search/tweets endPoint don't undestand why I will move on

@@ -3,10 +3,10 @@
  * @author Julian Correa
  */
 const chalk = require('chalk')
-const {getTwits$} = require('./app/')
-const moment = require('moment')
+const bodyParser = require('body-parser')
+const { getTwits, postTwit } = require('./app/')
 /**
- * express module
+ * sockectIp to make connections reltime to ciient
  * @const
  */
 const express = require("express")
@@ -17,34 +17,43 @@ const app = express()
 
 app.set("view engine", "pug");
 app.use(express.static('public'));
-
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 /**
  * PORT {number} if not set 8080 it will be used
  * @param
  */
 const port = process.env.PORT || 8080
 
+app.post('/post', (req, res) => {
+  if(req.body.message === undefined && req.body.url === undefined && req.body.message !== '' && req.body.url !== '')
+    res.json(new Error('params not found'))
+
+  postTwit(req.body.message, req.body.url )
+    .then((response) => {
+      res.json({
+        message: 'Posted to Twitter'
+      })
+    })
+    .catch((error) => {
+      res.json(error);
+    })
+});
+
+app.all("/getTwits/:long/:lat", (req, res) => {
+	getTwits(req.params.lat, req.params.long).then((data) =>{
+    res.status(200).json(data.data)
+  })
+})
+app.all("/getTwits", (req, res) => {
+	getTwits().then((data) =>{
+    res.status(200).json(data.data)
+  })
+})
 app.all("/*", (req, res) => {
 	res.render("index")
 })
 
-/*let i = 0
-getTwits$.subscribe(
-  data => {
-    i++
-
-      const relativeTime = 'empty'
-    console.log(chalk.green(`${i} - ${relativeTime} - ${data.text}
-    `))
-  },
-  err => {
-  console.log(chalk.red(err))
-  },
-  complete => {
-  console.log('done')
-  }
-)*/
-
 app.listen(port, function(){
-    console.log(chalk.blue(`server running in port ${port}`))
+  console.log(chalk.blue(`server running in port ${port}`))
 })

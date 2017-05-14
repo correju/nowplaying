@@ -1,25 +1,33 @@
+/**
+ * @file This file configures all instances Services, Controllers and Components and injects them to angular
+ */
 import angular from 'angular'
 import uiRouter from 'angular-ui-router'
 
-import FirstController from './controllers/first.controller'
+import PostController from './controllers/post.controller'
 import TwitsController from './controllers/twits.controller'
 import TwitsComponent from './components/twits.component'
-
-const app = angular.module('app', [uiRouter])
-
-app.controller('firstController', FirstController)
-app.controller('twitsController', TwitsController)
-
-app.component('twitsComponent', TwitsComponent)
-
-app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
+import PostComponent from './components/post.component'
+import SocketService from './services/socket.service'
+import 'ngtweet'
+const app = angular
+  .module('app', [uiRouter,'ngtweet'])
+  .service('socketService', SocketService)
+  .controller('postController', PostController)
+  .controller('twitsController', TwitsController)
+  .component('twitsComponent', TwitsComponent)
+  .component('postComponent', PostComponent)
+  .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
     $urlRouterProvider.otherwise('/');
     $stateProvider
-        .state('todos', {
-            url: '/',
-            template: '<twits-component></twits-component>'
-        })
-        $locationProvider.html5Mode(true)
-})
+      .state('initial', {
+        url: '/',
+        template: `
+          <post-component></post-component>
+          <twits-component></twits-component>
+        `
+      })
+    $locationProvider.html5Mode(true)
+  })
 
 export default app

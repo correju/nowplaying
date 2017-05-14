@@ -8,7 +8,7 @@ const {Observable} = require('rxjs')
  * twitter module
  * @const
  */
-const Twitter = require('twitter')
+// const Twitter = require('twitter')
 const Twit = require('twit')
 /*
  * Constant of the TWITTER api
@@ -38,12 +38,7 @@ const ACCSESS_TOKEN_SECRET = process.env.ACCSESS_TOKEN_SECRET
  * @param ACCSESS_TOKEN_KEY,
  * @param ACCSESS_TOKEN_SECRET
  */
-/*const twitter = new Twitter({
-  consumer_key: CONSUMER_KEY,
-  consumer_secret: CONSUMER_SECRET,
-  access_token_key: ACCSESS_TOKEN_KEY,
-  access_token_secret: ACCSESS_TOKEN_SECRET
-})*/
+
 
 const twit = new Twit({
   consumer_key: CONSUMER_KEY,
@@ -51,9 +46,21 @@ const twit = new Twit({
   access_token: ACCSESS_TOKEN_KEY,
   access_token_secret: ACCSESS_TOKEN_SECRET
 })
+/**
+ * This function is made to get the twitter serch
+ * @function
+ * @param lat coordiantes
+ * @param long cooridinates
+ */
+  const getTwits = (lat, long, rad=1000) => {
+    const params = {
+      q: '#nowPlaying#Nowplaying+#nowplaying+youtube.com/watch',
+      count: 6,
+    };
+    if (lat !== undefined && long !== undefined) params.geocode = `${lat} ${long} ${rad}mi`
+    return twit.get('search/tweets', params)
+  }
 
-const getTwitsCallback = function (observer) {
-  const cali = ['-76.590503','3.284575','-76.460825','3.505554']
   /*twitter.stream('statuses/filter', {track: 'nowplaying', location}, (stream) => {
     stream.on('data', (data) => {
       observer.next(data)
@@ -62,16 +69,23 @@ const getTwitsCallback = function (observer) {
       console.log(chalk.red('pass here'))
     })
   })*/
-  var sanFrancisco = [ '-122.75', '36.8', '-121.75', '37.8' ]
-  const stream = twit.stream('statuses/filter', { track: '#nowplaying', language: 'es', locations: cali })
+  /*var sanFrancisco = [ '-122.75', '36.8', '-121.75', '37.8' ]
+  const stream = twit.stream('statuses/filter', { track: '#Nowplaying+#nowplaying+youtube.com/watch', language: 'es', locations: cali })
   stream.on('tweet', function (tweet) {
     observer.next(tweet)
-  })
+  })*/
+/**
+ * @function This function is made to post new twitter
+ * @param message
+ * @param url
+ */
+const postTwit = (message, url) => {
+  return twit.post('statuses/update', {status: `#nowPlaying ${message} ${url}`});
 }
-const getTwits$ = new Observable(getTwitsCallback)
 
 module.exports = {
-  getTwits$
+  getTwits,
+  postTwit
 };
 
 

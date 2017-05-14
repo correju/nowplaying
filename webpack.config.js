@@ -5,7 +5,11 @@ var NODE_ENV = process.env.NODE_ENV || 'development'
 var isProd = NODE_ENV === 'production'
 var plugins = [
   new webpack.HotModuleReplacementPlugin(),
-  new ExtractTextPlugin('./css/[name].css')
+  new ExtractTextPlugin('./css/[name].css'),
+  new webpack.ProvidePlugin({
+      'videojs': 'video.js',
+      'window.videojs': 'video.js'
+  })
 ]
 
 if (isProd) {
@@ -57,6 +61,15 @@ module.exports = {
                    use: [
                        {loader: 'css-loader?sourceMap' },
                        {loader: 'less-loader?sourceMap' }
+                   ]
+                })
+            },
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                   fallback: 'style-loader',
+                   use: [
+                       {loader: 'css-loader?sourceMap' }
                    ]
                 })
             }
