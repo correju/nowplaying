@@ -38,6 +38,8 @@ export default class PostController {
     }).then(
       res => {
         this.rootScope.$emit('reload-twits')
+        this.url = ''
+        this.message = ''
         console.log(res)
       },
       err => {
