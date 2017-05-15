@@ -5,11 +5,13 @@
  * @class
  */
 export default class TwitsController {
-  constructor (scope, socketService) {
+  constructor (scope, socketService, rootScope) {
     this.data = []
     this.getGeolocation()
     this.socketService = socketService
-
+    rootScope.$on('reload-twits', () => {
+      this.getGeolocation()
+    })
   }
   getTwits(lat='', long=''){
     this.socketService.getTwits(lat, long).then(
@@ -27,4 +29,4 @@ export default class TwitsController {
     });
   }
 }
-TwitsController.$inject = ['$scope','socketService']
+TwitsController.$inject = ['$scope','socketService', '$rootScope']

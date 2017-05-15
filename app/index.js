@@ -54,10 +54,11 @@ const twit = new Twit({
  */
   const getTwits = (lat, long, rad=1000) => {
     const params = {
-      q: '#nowPlaying#Nowplaying+#nowplaying+youtube.com/watch',
+      q: '#nowPlaying+youtube',
       count: 6,
+      result_type: 'recent'
     };
-    if (lat !== undefined && long !== undefined) params.geocode = `${lat} ${long} ${rad}mi`
+    if (lat !== undefined && long !== undefined) params.geocode = `${lat},${long},20km`
     return twit.get('search/tweets', params)
   }
 

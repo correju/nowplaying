@@ -6,11 +6,12 @@
  */
 import {getGeolocation, getCity} from '../utils/'
 export default class PostController {
-  constructor (scope, socketService) {
+  constructor (scope, socketService, rootScope) {
     this.url = ''
     this.message = ''
     this.socketService = socketService
     this.place = ''
+    this.rootScope = rootScope
     getGeolocation().then(
       res => {
         // console.log(res)
@@ -36,6 +37,7 @@ export default class PostController {
       message: this.message
     }).then(
       res => {
+        this.rootScope.$emit('reload-twits')
         console.log(res)
       },
       err => {
@@ -45,4 +47,4 @@ export default class PostController {
     )
   }
 }
-PostController.$inject = ['$scope', 'socketService']
+PostController.$inject = ['$scope', 'socketService','$rootScope']

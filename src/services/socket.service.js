@@ -21,6 +21,7 @@ export default class socketService {
 
     }
     getTwits(lat='', long=''){
+      if (lat !== '', long !== '') return this.http.get(`getTwits/${lat}/${long}`)
       return this.http.get(`getTwits`)
     }
     postTwit(body={}){

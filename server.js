@@ -40,7 +40,7 @@ app.post('/post', (req, res) => {
     })
 });
 
-app.all("/getTwits/:long/:lat", (req, res) => {
+app.all("/getTwits/:lat/:long", (req, res) => {
 	getTwits(req.params.lat, req.params.long).then((data) =>{
     res.status(200).json(data.data)
   })
