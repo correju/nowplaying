@@ -6,7 +6,7 @@
  */
 export default class TwitsController {
   constructor (scope, socketService, rootScope) {
-    this.data = []
+    this.twits = []
     this.getGeolocation()
     this.socketService = socketService
     rootScope.$on('reload-twits', () => {
@@ -16,7 +16,7 @@ export default class TwitsController {
   getTwits(lat='', long=''){
     this.socketService.getTwits(lat, long).then(
       twits => {
-        this.data = twits.data.statuses
+        this.twits = twits.data.statuses
       },
       err => {
         console.log(err.message)
