@@ -24,7 +24,10 @@
     "rxjs": "^5.4.0",
     "socket.io": "^2.0.1",
     "socket.io-client": "^2.0.1",
-    "twit": "^2.2.5"
+    "twit": "^2.2.5",
+    "video.js": "^5.19.2",
+    "videojs-youtube": "^2.4.0",
+    "vjs-video": "^0.1.10"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

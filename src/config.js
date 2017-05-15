@@ -10,8 +10,11 @@ import TwitsComponent from './components/twits.component'
 import PostComponent from './components/post.component'
 import SocketService from './services/socket.service'
 import 'ngtweet'
+import 'videojs-youtube'
+import 'vjs-video'
+import "video.js/dist/video-js.css"
 const app = angular
-  .module('app', [uiRouter,'ngtweet'])
+  .module('app', [uiRouter,'ngtweet','vjs.video'])
   .service('socketService', SocketService)
   .controller('postController', PostController)
   .controller('twitsController', TwitsController)
