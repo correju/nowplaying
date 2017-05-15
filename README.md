@@ -17,8 +17,9 @@ Run **node server.js** to server<br>
 * **SATURDAY** 2 hours setting webpack, angular and ngtweet and connecting to the strem (had a probel making ngTweet work for and error injecting the dependency)
 * **SATURDAY** 4 hours refactor the nodejs connection to twitter stream using rxjs and socket.io there is no way I can geolocate per user I can only geolocate all.
 * **SUNDAY** 2 hours setting styles and looking into twitter cards embedded cards options
-* **SUNDAY** 1 hour searching why geolocate is not working on search/tweets endPoint don't undestand why I will move on
+* **SUNDAY** 1 hour searching why geolocate is not working.
 * **SUNDAY** 3 hours trying to solve issues with videojs sync an external source with angular
+* **MONDAY** 1 hour fix gelocation and reload after post
 ## TOOLING
 * Choose Angular 1.6 because it is a framework I've used in the past and I feel confortable working with it
 * ngTweet directive I found that manage all the twitter styles and simplify things
