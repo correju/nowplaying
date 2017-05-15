@@ -3,7 +3,7 @@ export default {
       //data: '='
   },
   template: `
-    <header><h1>#nowPlaying in: Colombia</h1></header>
+    <header><h1>#nowPlaying in: {{$ctrl.place}}</h1></header>
     <section class="post-section">
       <form>
         <fieldset class="fieldset-container">

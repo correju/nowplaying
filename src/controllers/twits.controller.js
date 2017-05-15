@@ -15,7 +15,6 @@ export default class TwitsController {
     this.socketService.getTwits(lat, long).then(
       twits => {
         this.data = twits.data.statuses
-        console.log(twits.data.statuses)
       },
       err => {
         console.log(err.message)
@@ -24,10 +23,6 @@ export default class TwitsController {
   }
   getGeolocation(){
     navigator.geolocation.getCurrentPosition( (data) => {
-      console.log({
-        latitude: data.coords.latitude,
-        longitude: data.coords.longitude,
-      })
       this.getTwits(data.coords.latitude,data.coords.longitude)
     });
   }
