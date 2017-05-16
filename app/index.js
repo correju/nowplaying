@@ -58,7 +58,7 @@ const twit = new Twit({
       count: 6,
       result_type: 'recent'
     };
-    if (lat !== undefined && long !== undefined) params.geocode = `${lat},${long},400km`
+    if (lat !== undefined && long !== undefined) params.geocode = `${lat},${long},200km`
     return twit.get('search/tweets', params)
   }
 
