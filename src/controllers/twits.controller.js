@@ -18,9 +18,9 @@ export default class TwitsController {
         this.twits.forEach((e) => {
             const regex1 = new RegExp('youtu.be','g')
             const regex2 = new RegExp('youtube.com','g')
-            const url = e.entities.urls[0].expanded_url
+            const url = e.tweet.entities.urls[0].expanded_url
             if(regex1.test(url) || regex2.test(url)) {
-              videojs(`video-${e.id}`,{
+              videojs(`video-${e.tweet.id}`,{
                 sources: [
                   {
                     type: 'video/youtube',
@@ -33,7 +33,10 @@ export default class TwitsController {
               })
               console.log(this.getId(url))
               socketService.youTubeTitle(this.getId(url)).then(title => {
-                console.log(title)
+                console.log(JSON.parse(title.data).title)
+                timeout(() => {
+                  e.youtubeTitle = JSON.parse(title.data).title
+                })
               })
             }
         })
@@ -48,7 +51,12 @@ export default class TwitsController {
   getTwits(lat='', long=''){
     this.socketService.getTwits(lat, long).then(
       twits => {
-        this.twits = twits.data.statuses
+        this.twits = twits.data.statuses.map(e => {
+          return {
+            youtubeTitle: '',
+            tweet: e
+          }
+        })
       },
       err => {
         console.log(err.message)

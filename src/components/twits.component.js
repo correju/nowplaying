@@ -6,10 +6,13 @@ export default {
   template: `
     <div class="section-wrapper">
       <section class="twits-wrapper" ng-repeat="twit in $ctrl.twits" emit-when="{event: 'allRendered', condition: $last}">
-        <div class="video-wrapper" id="{{twit.id}}-video-wrapper">
-          <video id="video-{{twit.id}}" controls class="video-js vjs-default-skin"></video>
+        <header class="video-title">
+          <h3>{{twit.youtubeTitle}}</h3>
+        </header>
+        <div class="video-wrapper" id="{{twit.tweet.id}}-video-wrapper">
+          <video id="video-{{twit.tweet.id}}" controls class="video-js vjs-default-skin"></video>
         </div>
-        <twitter-widget class="twit-wrapper" twitter-widget-id="twit.id_str" twitter-widget-options="{cards: 'hidden', 'light': 'dark' }"></twitter-widget>
+        <twitter-widget class="twit-wrapper" twitter-widget-id="twit.tweet.id_str" twitter-widget-options="{cards: 'hidden', 'light': 'dark' }"></twitter-widget>
       </section>
     </div>
   `,
