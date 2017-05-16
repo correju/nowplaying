@@ -87,7 +87,7 @@ const postTwit = (message, url) => {
 module.exports = {
   getTwits,
   postTwit
-};
+}
 
 
 

@@ -5,6 +5,8 @@
 const chalk = require('chalk')
 const bodyParser = require('body-parser')
 const { getTwits, postTwit } = require('./app/')
+const { getTitle } = require('./app/getTitle')
+
 /**
  * sockectIp to make connections reltime to ciient
  * @const
@@ -39,6 +41,12 @@ app.post('/post', (req, res) => {
       res.json(error);
     })
 });
+
+app.all("/getTitle/:id/", (req, res) => {
+  getTitle(req.params.id).then(response => {
+    res.status(200).json(response.data)
+  })
+})
 
 app.all("/getTwits/:lat/:long", (req, res) => {
 	getTwits(req.params.lat, req.params.long).then((data) =>{

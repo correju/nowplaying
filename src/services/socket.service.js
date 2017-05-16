@@ -27,6 +27,9 @@ export default class socketService {
     postTwit(body={}){
       return this.http.post(`post`,body)
     }
+    youTubeTitle(id){
+      return this.http.get(`getTitle/${id}`)
+    }
 }
 
 socketService.$inject = ['$http','$timeout']

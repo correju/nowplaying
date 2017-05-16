@@ -7,6 +7,7 @@
 export default class TwitsController {
   constructor (scope, socketService, rootScope, timeout) {
     this.twits = []
+
     this.getGeolocation()
     this.socketService = socketService
     rootScope.$on('reload-twits', () => {
@@ -30,10 +31,19 @@ export default class TwitsController {
                 width: 500,
                 height: 250
               })
+              console.log(this.getId(url))
+              socketService.youTubeTitle(this.getId(url)).then(title => {
+                console.log(title)
+              })
             }
         })
       },1)
     })
+  }
+  getId(url) {
+    const arr = url.split('/')
+    const lastItem = arr.length - 1
+    return arr[lastItem].replace(/watch\?v=/g, '')
   }
   getTwits(lat='', long=''){
     this.socketService.getTwits(lat, long).then(
