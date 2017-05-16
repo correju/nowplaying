@@ -14,3 +14,27 @@ header{
     }
   }
 }
+.section-wrapper{
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  .twits-wrapper{
+    &:first-child{
+      margin-top: 50px;
+    }
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 20px;
+    margin-bottom: 50px;
+
+    border: 1px solid rgb(225, 232, 237);;
+    border-radius: 4px;
+    .video-wrapper{
+      margin: auto 10px;
+    }
+    .twit-wrapper{
+      margin: auto 10px;
+    }
+  }
+}

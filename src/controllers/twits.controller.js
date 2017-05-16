@@ -5,12 +5,34 @@
  * @class
  */
 export default class TwitsController {
-  constructor (scope, socketService, rootScope) {
+  constructor (scope, socketService, rootScope, timeout) {
     this.twits = []
     this.getGeolocation()
     this.socketService = socketService
     rootScope.$on('reload-twits', () => {
       this.getGeolocation()
+    })
+    scope.$on('allRendered', (e, data) => {
+      timeout(() => {
+        this.twits.forEach((e) => {
+            const regex1 = new RegExp('youtu.be','g')
+            const regex2 = new RegExp('youtube.com','g')
+            const url = e.entities.urls[0].expanded_url
+            if(regex1.test(url) || regex2.test(url)) {
+              videojs(`video-${e.id}`,{
+                sources: [
+                  {
+                    type: 'video/youtube',
+                    src: url
+                  }
+                ],
+                techOrder: ["youtube"],
+                width: 500,
+                height: 250
+              })
+            }
+        })
+      },1)
     })
   }
   getTwits(lat='', long=''){
@@ -29,4 +51,4 @@ export default class TwitsController {
     });
   }
 }
-TwitsController.$inject = ['$scope','socketService', '$rootScope']
+TwitsController.$inject = ['$scope','socketService', '$rootScope', '$timeout']

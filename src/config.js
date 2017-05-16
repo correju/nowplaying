@@ -13,6 +13,7 @@ import 'ngtweet'
 import 'videojs-youtube'
 import 'vjs-video'
 import "video.js/dist/video-js.css"
+import "./styles/custom-videojs.css"
 const app = angular
   .module('app', [uiRouter,'ngtweet','vjs.video'])
   .service('socketService', SocketService)
@@ -32,5 +33,17 @@ const app = angular
       })
     $locationProvider.html5Mode(true)
   })
-
+  app.directive("emitWhen", function(){
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var params = scope.$eval(attrs.emitWhen),
+                event = params.event,
+                condition = params.condition;
+            if(condition){
+                scope.$emit(event);
+            }
+        }
+    }
+});
 export default app
