@@ -35,6 +35,7 @@ export default class TwitsController {
               socketService.youTubeTitle(this.getId(url)).then(title => {
                 console.log(JSON.parse(title.data).title)
                 timeout(() => {
+                  console.log(title.data)
                   e.youtubeTitle = JSON.parse(title.data).title
                 })
               })
@@ -46,7 +47,7 @@ export default class TwitsController {
   getId(url) {
     const arr = url.split('/')
     const lastItem = arr.length - 1
-    return arr[lastItem].replace(/watch\?v=/g, '')
+    return arr[lastItem].replace(/watch\?v=/g, '').replace(/&.*/g,'')
   }
   getTwits(lat='', long=''){
     this.socketService.getTwits(lat, long).then(

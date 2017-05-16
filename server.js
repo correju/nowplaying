@@ -44,7 +44,7 @@ app.post('/post', (req, res) => {
 
 app.all("/getTitle/:id/", (req, res) => {
   getTitle(req.params.id).then(response => {
-    res.status(200).json(response.data)
+    res.status(200).json(response)
   })
 })
 
