@@ -1,6 +1,6 @@
 # Get post with the #nowPlaying tag
 ## Eviromental Variables
-This variables must be created in order to connect to the **TWITTER's API**
+This Environment variables must be created in order to connect to the **TWITTER's API**
 * `PORT` if not set 8080 port will be used as default
 * `CONSUMER_KEY` this env variable must be set if not project wont't work
 * `CONSUMER_SECRET` this env variable must be set if not project wont't work
