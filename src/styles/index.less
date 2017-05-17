@@ -3,14 +3,43 @@ header{
 }
 .post-section{
   .fieldset-container{
-    padding-top: 15px;
     background-color: rgb(225, 232, 237);
-    //background: #356384;
+    & > .flex-wrapper {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      height: 100%;
+      align-items: center;
+      & > * {
+        flex: 0 1 800px;
+        max-width: calc(~"100% - 4px");
+        display: flex;
+        width: auto;
+        input{
+          display: block;
+          width: 100%;
+          height: 34px;
+          padding: 6px 12px;
+          font-size: 14px;
+          line-height: 1.42857143;
+          color: #555;
+          background-color: #fff;
+          background-image: none;
+          border: 1px solid #ccc;
+          margin: 10px 5px 10px 5px;
+          border-radius: 4px;
+          &:focus{
+            outline: 0;
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+          }
+        }
+      }
+    }
     #video-url,
     #message {
       //margin-left: 5px;
-      width: 300px;
-      width: 100%;
+      //width: 300px;
+      //width: 100%;
     }
   }
 }
