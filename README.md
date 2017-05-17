@@ -28,4 +28,9 @@ Run **node server.js** to server<br>
 * Less because it was already set up I just used it
 * videojs I know his functionality and easy to use. The problems I am having are more with sync.
 * babel to traspile
+## IDEAS TO DO IN THE FUTURE
+* Grab the tweets feed and create a playlist
+* Player will use youtube as feed to play videos
+* User can see the tweet automatically play the song
+* User can change to next song
 
