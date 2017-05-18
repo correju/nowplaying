@@ -14,22 +14,26 @@ const Twit = require('twit')
  * Constant of the TWITTER api
  * @param CONSUMER_KEY {hash}
  */
-const CONSUMER_KEY = process.env.CONSUMER_KEY
+//const CONSUMER_KEY = process.env.CONSUMER_KEY
+const CONSUMER_KEY = "CXVNsTDohsJaIxl0cjpuLKXYr"
 /**
  * Constant of the TWITTER api
  * @param CONSUMER_SECRET {hash}
  */
-const CONSUMER_SECRET = process.env.CONSUMER_SECRET
+//const CONSUMER_SECRET = process.env.CONSUMER_SECRET
+const CONSUMER_SECRET = "Y49dNi2NPN9vJaPS95QnRLslOqisEuC7v934lHOfN05cVjbtDB"
 /**
  * Constant of the TWITTER api
  * @param ACCSESS_TOKEN_KEY {hash}
  */
-const ACCSESS_TOKEN_KEY = process.env.ACCSESS_TOKEN_KEY
+//const ACCSESS_TOKEN_KEY = process.env.ACCSESS_TOKEN_KEY
+const ACCSESS_TOKEN_KEY = "2834545563-QYQqm8hnLPiU3eFyAD8SGtKhfIYW7gMp8fGh8Xd"
 /**
  * Constant of the TWITTER api
  * @param ACCSESS_TOKEN_SECRET {hash}
  */
-const ACCSESS_TOKEN_SECRET = process.env.ACCSESS_TOKEN_SECRET
+//const ACCSESS_TOKEN_KEY = process.env.ACCSESS_TOKEN_KEY
+const ACCSESS_TOKEN_SECRET = "SUquQt3XC2ve3IIa8JbwMa4bsRCpZSJuCVKYAXLUTDBBT"
 /**
  * receives all the params to connect to Twitter's api
  * @instance Twitter

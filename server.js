@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
  * PORT {number} if not set 8080 it will be used
  * @param
  */
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 3001
 
 app.post('/post', (req, res) => {
   if(req.body.message === undefined && req.body.url === undefined && req.body.message !== '' && req.body.url !== '')
