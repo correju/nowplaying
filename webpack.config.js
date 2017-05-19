@@ -24,7 +24,7 @@ if (isProd) {
   ]
 }
 module.exports = {
-    devtool: (isProd) ? false : 'inline-source-map',
+    devtool: (isProd) ? false : 'cheap-source-map ',
     entry: [
         './src/index.js'
     ],
@@ -84,7 +84,7 @@ module.exports = {
           poll: true
         },
         proxy: {
-            '*': 'http://localhost:3001/'
+            '*': 'http://localhost:3000/'
         },
         headers: {
             "Access-Control-Allow-Origin": "*",

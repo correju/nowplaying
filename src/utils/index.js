@@ -3,10 +3,24 @@
   */
 const getGeolocation = () => {
   return new Promise( (res, rej) => {
-    res({
+    /*res({
       latitude: '3.3937852',
       longitude: '-76.5303587'
-    })
+    })*/
+    navigator.geolocation.getCurrentPosition(
+      (data) => {
+        res({
+          latitude: data.coords.latitude,
+          longitude: data.coords.longitude
+        })
+      },
+      err => {
+        res({
+          latitude: '3.3937852',
+          longitude: '-76.5303587'
+        })
+      }
+    )
   })
 }
 const getCity = (lat, long) => {

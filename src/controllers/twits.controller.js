@@ -65,18 +65,14 @@ export default class TwitsController {
     )
   }
   getGeolocation(){
-    if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
-      this.getTwits('3.3937852', '-76.5303587')
-    } else {
-      navigator.geolocation.getCurrentPosition(
-        data => {
-          this.getTwits(data.coords.latitude,data.coords.longitude)
-        },
-        err => {
-          console.log('error')
-        }
-      )
-    }
+    navigator.geolocation.getCurrentPosition(
+      data => {
+        this.getTwits(data.coords.latitude,data.coords.longitude)
+      },
+      err => {
+        this.getTwits('3.3937852', '-76.5303587')
+      }
+    )
   }
 }
 TwitsController.$inject = ['$scope','socketService', '$rootScope', '$timeout']
