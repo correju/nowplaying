@@ -4,7 +4,7 @@
 /**
  * @class
  */
-import {getGeolocation, getCity} from '../utils/'
+import {getGeolocation, getCity, mapDomElements} from '../utils/'
 export default class PostController {
   constructor (scope, socketService, rootScope) {
     this.url = ''
@@ -32,6 +32,9 @@ export default class PostController {
     })
   }
   post () {
+    this.socketService.getList().forEach(e => {
+      videojs(`video-${e.tweet.id}`).dispose()
+    })
     this.socketService.postTwit({
       url: this.url,
       message: this.message
@@ -40,7 +43,6 @@ export default class PostController {
         this.rootScope.$emit('reload-twits')
         this.url = ''
         this.message = ''
-        console.log(res)
       },
       err => {
         console.log(err)

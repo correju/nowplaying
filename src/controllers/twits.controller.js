@@ -8,8 +8,10 @@ export default class TwitsController {
   constructor (scope, socketService, rootScope, timeout) {
     this.twits = []
 
-    this.getGeolocation()
+
     this.socketService = socketService
+    this.getGeolocation()
+
     rootScope.$on('reload-twits', () => {
       this.getGeolocation()
     })
@@ -31,11 +33,8 @@ export default class TwitsController {
                 width: 500,
                 height: 250
               })
-              console.log(this.getId(url))
               socketService.youTubeTitle(this.getId(url)).then(title => {
-                console.log(JSON.parse(title.data).title)
                 timeout(() => {
-                  console.log(title.data)
                   e.youtubeTitle = JSON.parse(title.data).title
                 })
               })
@@ -58,6 +57,7 @@ export default class TwitsController {
             tweet: e
           }
         })
+        this.socketService.setList(this.twits)
       },
       err => {
         console.log(err.message)
@@ -65,9 +65,18 @@ export default class TwitsController {
     )
   }
   getGeolocation(){
-    navigator.geolocation.getCurrentPosition( (data) => {
-      this.getTwits(data.coords.latitude,data.coords.longitude)
-    });
+    if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+      this.getTwits('3.3937852', '-76.5303587')
+    } else {
+      navigator.geolocation.getCurrentPosition(
+        data => {
+          this.getTwits(data.coords.latitude,data.coords.longitude)
+        },
+        err => {
+          console.log('error')
+        }
+      )
+    }
   }
 }
 TwitsController.$inject = ['$scope','socketService', '$rootScope', '$timeout']

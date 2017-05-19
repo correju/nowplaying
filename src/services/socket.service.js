@@ -30,6 +30,12 @@ export default class socketService {
     youTubeTitle(id){
       return this.http.get(`getTitle/${id}`)
     }
+    setList(list){
+      this.list = list
+    }
+    getList(){
+      return this.list
+    }
 }
 
 socketService.$inject = ['$http','$timeout']
