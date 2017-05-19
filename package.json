@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs": "jsdoc -c .jsdoc.json",
     "start": "cross-env node server & webpack-dev-server --progress --host 0.0.0.0",
-    "build": "cross-env webpack --progress"
+    "server1": "webpack-dev-server --progress --host 0.0.0.0",
+    "server": "node server",
+    "build": "cross-env webpack --progress -w"
   },
   "author": "Julian Correa",
   "license": "MIT",
